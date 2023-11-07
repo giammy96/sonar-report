@@ -164,7 +164,7 @@
       <canvas id="vulnerabilitiesPieChart" width="200" height="200"></canvas>
       <% } %>
     </div>
-  <div class="Summary">
+  <div >
       <h2>Summary of the Detected Quality issues
       </h2>
       <table>
@@ -236,7 +236,7 @@
         <% if ( issues[i].type === 'hotspot') { %>
 
         <tr>
-          <td><a href="#<%= issues[i].rule %>">
+          <td><a href="<%= sonarBaseURL %>/coding_rules#rule_key=<%= issues[i].rule %>">
               <%= issues[i].rule %>
             </a></td>
           <td>
@@ -289,7 +289,7 @@
         <% if (issues[i].type === 'BUG') { %>
 
         <tr>
-          <td><a href="#<%= issues[i].rule %>">
+          <td><a href="<%= sonarBaseURL %>/coding_rules#rule_key=<%= issues[i].rule %>">
               <%= issues[i].rule %>
             </a></td>
           <td>
@@ -342,7 +342,7 @@
         <% if (issues[i].type === 'CODE_SMELL') { %>
 
         <tr>
-          <td><a href="#<%= issues[i].rule %>">
+          <td><a href="<%= sonarBaseURL %>/coding_rules#rule_key=<%= issues[i].rule %>">
               <%= issues[i].rule %>
             </a></td>
           <td>
@@ -385,12 +385,12 @@
       </thead>
       <tbody>
         <% for (const [ruleKey, rule] of rules) { %>
-        <tr id="<%= ruleKey %>" >
-          <td class="colored"><a href="https://next.sonarqube.com/sonarqube/coding_rules#rule_key=<%= ruleKey %>">
-          <h5><%= ruleKey %></h5> 
+        <tr>
+          <td><a href="https://next.sonarqube.com/sonarqube/coding_rules#rule_key=<%= ruleKey %>">
+              <%= ruleKey %>
             </a>
           </td>
-          <td class="info">
+          <td>
             <details>
               <%- rule.htmlDesc %>
             </details>
@@ -459,8 +459,6 @@
       ctx.fill();
       lastend += Math.PI * 2 * (data[i] / total);
     }
-
-
   </script>
 
   <% } %>
